@@ -1,0 +1,32 @@
+
+<div id="tabela"></div>
+
+<script>
+    window.onload = async () => {
+        const res = await fetch('/api/objetos');
+        const lista = await res.json();
+
+        let tabela = "<table style='width: 100%'>";
+        tabela += "<thead><tr><th style='text-align: center;'>ID</th><th style='text-align: center;'>Nome</th><th style='text-align: center;'>Ação</th></tr></thead><tbody>";
+
+        for (let i = 0; i < lista.length; i++) {
+            tabela += `<tr style='text-align: center;'>
+                          <td style='border: 1px solid #ddd;'>${lista[i].id}</td>
+                          <td style='border: 1px solid #ddd;'>${lista[i].nome}</td>
+                          <td style='border: 1px solid #ddd;'><a href="#" onclick="apagar('${lista[i].id}')">x</a></td>
+                       </tr>`;
+        }
+
+        tabela += "</tbody></table>";
+        document.getElementById('tabela').innerHTML = tabela;
+    };
+
+    async function apagar(id) {
+        if (confirm(`Deseja apagar o objeto ${id}?`)) {
+            const res = await fetch('/api/objetos/' + id, { method: 'DELETE' });
+            const txt = await res.text();
+            alert(txt);
+            window.location.reload();
+        }
+    }
+</script>
