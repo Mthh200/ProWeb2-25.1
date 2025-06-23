@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "src/loader.js",
+  "scripts": {
+    "dev": "nodemon",
+    "production": "pm2 start src/loadr.js --name todo-app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "1.15.2",
+    "dotenv": "^16.5.0",
+    "express": "4.14.0",
+    "express-validator": "^7.2.1",
+    "http-errors": "^2.0.0",
+    "mongoose": "4.7.0",
+    "mysql2": "^3.14.1",
+    "node-restful": "0.2.5",
+    "pm2": "2.1.5",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "nodemon": "1.11.0",
+    "sequelize-cli": "^6.6.3"
+  }
+}
